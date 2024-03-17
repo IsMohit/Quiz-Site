@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Js Quiz</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .Que_container{
+             background-image:url('images/background-img.jpg');
+            background-size: cover;
+            background-position:center;
+        }
+      
+         span{
+            font-size: 17px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+      
+         input:hover{
+            cursor: pointer;
+         }
+        em{
+            font-size: 16px;
+        }
+        li
+        {   
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;     
+        }
+
+        li:hover{
+            cursor:pointer;
+            color: white;
+            text-shadow:2px 2px 3px rgba(0, 0, 0, 0.342)
+        }
+
+        .Questions_all
+        {
+            text-align: justify;
+        }
+
+        #que_head{
+            display: block;
+            position: relative;
+            background-color: rgb(2, 2, 77);
+            font-size: 25px;
+            font-family: arial;
+            text-align: center;
+            font-stretch:ultra-expanded ;
+            color: rgb(0, 255, 42);
+            text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.596);
+            padding: 10px 10px ;
+            padding-bottom :14px ;
+            margin-top: 0;
+        }
+
+        #que_head:hover{
+            color:rgb(0, 183, 255);
+            transition: .40s;
+        }
+
+        #go-home{
+            display: inline;
+            font-size: 18px;
+            float: right;
+            color: white;
+            font-weight: normal;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+            border-radius:50px;
+            padding: 10px 12px ;
+            margin-top:0 ;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.342)
+        }
+
+        #go-home:hover{
+            background-color: black;
+            cursor: pointer;
+        }
+
+        #all_corr{
+            text-align: center;
+            font-style: italic;
+            font-family: Arial;
+            color: white;
+            font-stretch: wider;
+            text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.596);
+        }
+
+        #all_corr:hover{
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.596);
+            color: yellow;
+        }
+
+        #res_text{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+        #results{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 22px;
+            display: inline-block;
+            color: white;
+            background-color: red;
+        }
+
+        /* For Button */
+        #res_btn{
+            font-size: 18px;
+            font-weight: bolder;
+            font-family: Arial, Helvetica, sans-serif;
+            border: none;
+            border-radius: 90px;
+            color: white;
+            background-color: rgb(3, 190, 3);
+            width: 180px;
+            height: 35px;
+            margin-left: 50%;    
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.596);
+        }
+
+        #res_btn:hover{
+            background-color: rgb(5, 145, 238);
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        
+        #res_btn:active
+        {
+            color: rgb(173, 172, 172);
+        }
+
+        hr{
+            margin-bottom: 0;
+            border-color: rgb(0, 0, 0);
+        }
+
+        .alert_ans{ 
+            color: red;
+        }
+
+    </style>
+    <script>
+        function Question_ans()
+       {
+        
+        var count = 0;
+
+        for(var i = 1 ; i <=20 ; i++)
+        {
+            var radioName = document.getElementsByName('Q'+i);
+        
+            for(var j = 0 ; j < radioName.length;j++)
+            {
+                var radioValues = radioName[j];
+                if(radioValues.checked)
+                {
+                    if(radioValues.value == "correct" )
+                    {
+                        count = count+1;
+                        radioValues.nextSibling.style.color="green";
+                    }
+                    else
+                    {
+                        radioValues.nextSibling.style.color="red";
+                    }
+                }
+                else
+                {
+                    radioValues.nextSibling.style.color="";
+                }
+            }
+        }
+
+        window.location = "#res_text";
+        
+        document.getElementById('results').innerHTML="&nbsp;You answered "+count+"/20&nbsp;";
+        if(count==20)
+        {
+            document.getElementById('results').style.color="white";
+            document.getElementById('results').style.backgroundColor="green";
+            window.location= "#all_corr";
+            document.getElementById('all_corr').innerHTML="CONGRATULATION , You Answered All Questions Correctly !! ✨";     
+        }
+       }
+
+       function Go_home()
+       {
+        window.open('index.html',"_self");
+       }
+
+    </script>
+</head>
+<body>
+    <div class="Que_container">
+        <h1 id="que_head"> JAVASCRIPT QUIZ !!!<p onclick="Go_home()" id="go-home">Home</p></h1>
+        <br><br>
+        <div class="Questions_all">
+            <ul>
+                <!-- Start of Question No.10 to 20 -->
+                <div class="Que1">
+                    <li><p class="Q1">JavaScript is an ______ language?</p></li>
+                    <input type="radio" name="Q1" value="correct"><span>Object-Oriented</span><br>
+                    <input type="radio" name="Q1" value="wrong"><span>Object-based</span><br>
+                    <input type="radio" name="Q1" value="wrong"><span>Procedural</span><br>
+                    <input type="radio" name="Q1" value="wrong"><span>None of the above</span><br>   
+                </div><br>
+                
+                <div class="Que2">
+                    <li><p class="Q2">Which of the following keywords are used to define a variable in JavaScript?</p></li>
+                    <input type="radio" name="Q2" value="wrong"><span>var</span><br>
+                    <input type="radio" name="Q2" value="wrong"><span>let</span><br>
+                    <input type="radio" name="Q2" value="correct"><span>Both var and let</span><br>
+                    <input type="radio" name="Q2" value="wrong"><span>None of the Above</span><br>
+                </div><br>
+                
+                <div class="Que3">
+                    <li><p class="Q3">Which of the folowing methods is used to access HTML elements using JavaScript?</p></li>
+                    <input type="radio" name="Q3" value="wrong"><span>getElementById</span><br>
+                    <input type="radio" name="Q3" value="wrong"><span>getElementsByClassName</span><br>
+                    <input type="radio" name="Q3" value="correct"><span>Both method</span><br>
+                    <input type="radio" name="Q3" value="wrong"><span>None of the Above</span><br>   
+                </div><br>
+                
+                <div class="Que4">
+                    <li><p class="Q4">Which of the following methods can be used to display data in some form using JavaScript?</p></li>
+                    <input type="radio" name="Q4" value="wrong"><span>document.write</span><br>
+                    <input type="radio" name="Q4" value="wrong"><span>console.log</span><br>
+                    <input type="radio" name="Q4" value="wrong"><span>window.alert</span><br>
+                    <input type="radio" name="Q4" value="correct"><span>All of the above</span><br>   
+                </div><br>
+                
+                <div class="Que5">
+                    <li><p class="Q5">How can a datatype be declared to be as constant type?</p></li>
+                    <input type="radio" name="Q5" value="correct"><span>const</span><br>
+                    <input type="radio" name="Q5" value="wrong"><span>var</span><br>
+                    <input type="radio" name="Q5" value="wrong"><span>let</span><br>
+                    <input type="radio" name="Q5" value="wrong"><span>constant</span><br>   
+                </div><br>
+                
+                <div class="Que6">
+                    <li><p class="Q6">Which of the following are closure in JavaScript?</p></li>
+                    <input type="radio" name="Q6" value="wrong"><span>Variables</span><br>
+                    <input type="radio" name="Q6" value="wrong"><span>Functions</span><br>
+                    <input type="radio" name="Q6" value="wrong"><span>Objects</span><br>
+                    <input type="radio" name="Q6" value="correct"><span>All of the above</span><br>   
+                </div><br>
+                
+                <div class="Que7">
+                    <li><p class="Q7">Which of the following is not JavaScript framework?</p></li>
+                    <input type="radio" name="Q7" value="wrong"><span>Node</span><br>
+                    <input type="radio" name="Q7" value="wrong"><span>Vue</span><br>
+                    <input type="radio" name="Q7" value="wrong"><span>React</span><br>
+                    <input type="radio" name="Q7" value="correct"><span>Cassandra</span><br>   
+                </div><br>
+                
+                <div class="Que8">
+                    <li><p class="Q8">What keyword is used to declare an asynchronous function in JavaScript?</p></li>
+                    <input type="radio" name="Q8" value="correct"><span>async</span><br>
+                    <input type="radio" name="Q8" value="wrong"><span>await</span><br>
+                    <input type="radio" name="Q8" value="wrong"><span>setTimeout</span><br>
+                    <input type="radio" name="Q8" value="wrong"><span>None of the Above</span><br>   
+                </div><br>
+                
+                <div class="Que9">
+                    <li><p class="Q9">How to stop an interval timer in JavaScript?</p></li>
+                    <input type="radio" name="Q9" value="wrong"><span>clearTimer</span><br>
+                    <input type="radio" name="Q9" value="correct"><span>clearInterval</span><br>
+                    <input type="radio" name="Q9" value="wrong"><span>intervalOver</span><br>
+                    <input type="radio" name="Q9" value="wrong"><span>None of the Above</span><br>   
+                </div><br>
+                
+                <div class="Que10">
+                    <li><p class="Q10">Which of the following is not JavaScript datatype?</p></li>
+                    <input type="radio" name="Q10" value="wrong"><span>Null type</span><br>
+                    <input type="radio" name="Q10" value="wrong"><span>Undefined type</span><br>
+                    <input type="radio" name="Q10" value="wrong"><span>Number type</span><br>
+                    <input type="radio" name="Q10" value="correct"><span>All of the above</span><br>   
+                </div><br>   
+                <!-- End of Question NO. 1 to 10 -->
+                
+                <!-- Start of Question No.10 to 20 -->
+                <div class="Que11">
+                    <li><p class="Q11">Which of the following is the correct output for the following JavaScript code : <em><br> var x = 5 , y= 1 <br> var obj=x:10<br>with(obj) <br>{<br>alert(y) <br>}</em></p></li>
+                    <input type="radio" name="Q11" value="correct"><span>1</span><br>   
+                    <input type="radio" name="Q11" value="wrong"><span>Error</span><br>
+                    <input type="radio" name="Q11" value="wrong"><span>10</span><br>
+                    <input type="radio" name="Q11" value="wrong"><span>5</span><br>
+                </div><br>   
+
+                <div class="Que12">
+                    <li><p class="Q12">Which one of the following also known as Conditional Expression?</p></li>
+                    <input type="radio" name="Q12" value="wrong"><span>Alternative to if-else</span><br>
+                    <input type="radio" name="Q12" value="wrong"><span>Switch statement</span><br>
+                    <input type="radio" name="Q12" value="wrong"><span>if-then-else statement</span><br>
+                    <input type="radio" name="Q12" value="correct"><span>immediate if</span><br>   
+                </div><br>  
+
+                <div class="Que13">
+                    <li><p class="Q13">In JavaScript, what is a block of statement?</p></li>
+                    <input type="radio" name="Q13" value="wrong"><span>Conditional block</span><br>
+                    <input type="radio" name="Q13" value="correct"><span>Block that combines a number of statements into a single compound statement</span><br>   
+                    <input type="radio" name="Q13" value="wrong"><span>Both conditional block and a single statement</span><br>
+                    <input type="radio" name="Q13" value="wrong"><span>Block that contains a single statement</span><br>
+                </div><br>  
+
+                <div class="Que14">
+                    <li><p class="Q14">When interpreter encounters an empty statement what it wil do: </p></li>
+                    <input type="radio" name="Q14" value="wrong"><span>Shows a warning</span><br>
+                    <input type="radio" name="Q14" value="wrong"><span>Prompts to complete the statement</span><br>
+                    <input type="radio" name="Q14" value="wrong"><span>Throws an Error</span><br>
+                    <input type="radio" name="Q14" value="correct"><span>Ignores the statement</span><br>   
+                </div><br>  
+
+                <div class="Que15">
+                    <li><p class="Q15">The "function" and "var" are known as:</p></li>
+                    <input type="radio" name="Q15" value="wrong"><span>keywords</span><br>
+                    <input type="radio" name="Q15" value="wrong"><span>Data types</span><br>
+                    <input type="radio" name="Q15" value="correct"><span>Declaration statements</span><br>   
+                    <input type="radio" name="Q15" value="wrong"><span>Prototypes</span><br>
+                </div><br>  
+
+                <div class="Que16">
+                    <li><p class="Q16">Which of the following variables takes precedence over the others if the names are the same?</p></li>
+                    <input type="radio" name="Q16" value="wrong"><span>Global variable</span><br>
+                    <input type="radio" name="Q16" value="correct"><span>Local variable</span><br>   
+                    <input type="radio" name="Q16" value="wrong"><span>The two of the above</span><br>
+                    <input type="radio" name="Q16" value="wrong"><span>None of the above</span><br>
+                </div><br>  
+
+                <div class="Que17">
+                    <li><p class="Q17">Which of the following type of a variable is volatile?</p></li>
+                    <input type="radio" name="Q17" value="correct"><span>Mutable variable</span><br>   
+                    <input type="radio" name="Q17" value="wrong"><span>Dynamic variable</span><br>
+                    <input type="radio" name="Q17" value="wrong"><span>Volatile variable</span><br>
+                    <input type="radio" name="Q17" value="wrong"><span>Immutable variable</span><br>
+                </div><br>  
+
+                <div class="Que18">
+                    <li><p class="Q18">In the JavaScript , which one the folowing is not considered as an error :</p></li>
+                    <input type="radio" name="Q18" value="wrong"><span>Syntax error</span><br>
+                    <input type="radio" name="Q18" value="wrong"><span>Missing of semicolons</span><br>
+                    <input type="radio" name="Q18" value="correct"><span>Division by zero</span><br>   
+                    <input type="radio" name="Q18" value="wrong"><span>Missing of bracket</span><br>
+                </div><br>  
+
+                <div class="Que19">
+                    <li><p class="Q19">Which of the following number object function returns the value of the number?</p></li>
+                    <input type="radio" name="Q19" value="wrong"><span>toString()</span><br>
+                    <input type="radio" name="Q19" value="correct"><span>valueOf()</span><br>   
+                    <input type="radio" name="Q19" value="wrong"><span>toLocaleString()</span><br>
+                    <input type="radio" name="Q19" value="wrong"><span>toPrecision()</span><br>
+                </div><br>
+
+                <div class="Que20">
+                    <li><p class="Q20">Choose the correct code from the following to check if the variable "a" is not equal to "NULL":</p></li>
+                    <input type="radio" name="Q20" value="correct"><span>if(a!==null)</span><br>   
+                    <input type="radio" name="Q20" value="wrong"><span>if(a!)</span><br>
+                    <input type="radio" name="Q20" value="wrong"><span>if(a!null)</span><br>
+                    <input type="radio" name="Q20" value="wrong"><span>if(a!=null)</span><br>
+                </div><br>  
+
+                
+                
+            </ul>  
+            <br>
+            <button type="submit" id="res_btn" onclick="Question_ans()">Show Results</button>
+        </div><br><br><hr><br>
+        <div class="Answers">
+            <h1 id="res_text">Results are :</h1>
+            <p id="results"></p>
+            <h2 id="all_corr"></h2>
+            <hr>
+        </div>
+    </div>
+</body>
+</html>

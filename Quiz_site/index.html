@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+      body{
+        background-image: url('images/home-page2.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 90vh;
+      }
+
+      .home_head{
+        color: rgb(255, 17, 0);
+        font-stretch: wider;
+        text-align: center;
+        top: 80px;
+        font-size:30px ;
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.726);
+        position: relative;
+      }
+
+      #head-tag_js{
+        color: white;
+        font-size: 70px;
+        margin-left: 33%;
+      }
+
+      #head-tag_js:hover{
+        cursor: pointer;
+        color: rgb(255, 187, 0);
+        transition: .4s;
+      }
+
+      .home_body{
+        text-align: center;
+      }
+
+      #start_btn1{
+        font-size: 25px;
+            font-weight: bolder;
+            font-family: Arial, Helvetica, sans-serif;
+            border: none;
+            border-radius: 120px;
+            color: white;
+            background-color: rgb(5, 121, 253);;
+            width: 240px;
+            height: 55px;
+            bottom: -150px;
+            left: 0%;
+            position: relative;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.596);
+      }
+
+      #start_btn1:hover{
+        background-color:rgb(255, 17, 0);
+            transition: 0.5s;
+            cursor: pointer;
+      }
+
+      #start_btn2{
+        font-size: 25px;
+            font-weight: bolder;
+            font-family: Arial, Helvetica, sans-serif;
+            border: none;
+            border-radius: 120px;
+            color: white;
+            background-color: rgb(5, 121, 253);;
+            width: 240px;
+            height: 55px;
+            bottom: -150px;
+            left: 0%;
+            position: relative;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.596);
+            margin-left: 45px;
+      }
+
+      #start_btn2:hover{
+        background-color:rgb(255, 17, 0);
+            transition: 0.5s;
+            cursor: pointer;
+      }
+
+      /* Navbar */
+
+      ul{
+        border: none;
+        list-style-type:none;
+        margin: 0;
+        padding:0 ;
+        overflow: hidden;
+        background-color: rgb(2, 2, 77);
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+
+      }
+      
+      li{
+        float: right;
+        /* display: inline; */
+      }
+
+      li a{
+        border: none;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 18px;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.342);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+      
+      li a:hover{
+        background-color:  rgb(0, 0, 0) ;
+        /* border-radius: 25px; */
+      }
+
+      #logo{
+        color: rgb(255, 187, 0);
+        display: inline;
+        padding-left: 18px;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.342);
+        font-weight: bold;
+        font-family: cursive;
+        font-size: 20px;
+        border: none;
+      }
+    </style>
+
+    <script>
+        function GoTojs()
+        {
+            window.open('Quiz_struct.html',"_self")
+        }
+
+        function GoTojava()
+        {
+            window.open('JQuiz_struct.html',"_self")
+        }
+
+    </script>
+</head>
+<body>
+   <div class="Home_contain">
+    <div class="home_nav">
+        <ul>
+          <p id="logo">...The Quiz !</p>
+          <li><a href="About.html">About</a></li>
+          <li><a href="JQuiz_struct.html">Java</a></li>
+            <li><a href="Quiz_struct.html">JavaScript</a></li>
+          <li><a href="#head-tag">Home</a></li>
+        </ul>
+    </div>
+    <div class="home_head">
+     <br><br><h1 class="head-tag">Let's see your knowledge about <br><span id="head-tag_js">Java | JavaScript</span></h1>
+    </div>
+    <div class="home_body">
+        <input type="button" id="start_btn1"   value="JavaScript" onclick="GoTojs()">
+        <input type="button" id="start_btn2"   value="Java" onclick="GoTojava()">
+    </div>
+   </div>
+</body>
+</html>
